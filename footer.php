@@ -3,7 +3,7 @@
       <div class='column'>
         <p>
           Made with &#x2665; by <a href='https://natenorthway.com' target='_blank'>Nate Northway</a><br />
-          <a href='#'>Github</a><br />
+          <a href='https://github.com/nnorthway/topik' target='_blank'>Github</a><br />
           <a href='<?php echo $base; ?>privacy'>Privacy</a><br />
         </p>
       </div>
