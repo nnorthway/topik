@@ -1,5 +1,6 @@
 # Topik
-Topik is an open source, database-less blogging system (or flat-file) that is based in simplicity and speed. There is no "admin" section and this is not a CMS. This system simply gathers all of your posts and puts them into a comprehensive view. Posts are written in PHP and require a little bit of PHP knowledge to get started.
+Topik is an open source, database-less blogging system (or flat-file) that is based in simplicity and speed. There is no "admin" section and this is not a CMS. This system simply gathers all of your posts and puts them into a comprehensive view. Posts are written in PHP and require a little bit of PHP knowledge to get started.  
+The base files score 100 on Google PageSpeed Insights for both mobile and desktop. The complete size is <100kb.
 
 ___
 
@@ -55,7 +56,7 @@ Each post should have the variables for title, description, and date defined at 
 ---
 
 ## Contributors
-This was built by me, Nate Northway.
+This was built by me, Nate Northway. To contribute, send me a message with your idea, and I'll add you as a contributor.
 
 ---
 
