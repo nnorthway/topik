@@ -49,7 +49,7 @@
       <nav class='navbar is-fixed-top' role='navigation' aria-label='main navigation'>
         <div class='navbar-brand'>
           <a class='navbar-item' href='<?php echo $base; ?>'>Topik</a>
-          <a role='button' class='navbar-burger' aria-label='menu' aria-expanded='false' data-target='navbar'>
+          <a role='button' class='navbar-burger' id='navbar_toggle' aria-label='menu' aria-expanded='false' data-target='navbar'>
             <span aria-hidden='true'></span>
             <span aria-hidden='true'></span>
             <span aria-hidden='true'></span>
