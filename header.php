@@ -42,6 +42,20 @@
     .content pre code {
       padding-left: 1em;
     }
+    .showcase {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+      color: #4a4a4a;
+    }
+    .showcase img {
+      margin: 0 auto;
+    }
+    .showcase:hover img {
+      filter: brightness(50%);
+    }
     </style>
   </head>
   <body>
@@ -58,6 +72,7 @@
         <div id='navbar' class='navbar-menu'>
           <a class='navbar-item' href='<?php echo $base; ?>'>Home</a>
           <a class='navbar-item' href='<?php echo $base; ?>posts'>Blog</a>
+          <a class='navbar-item' href='<?php echo $base; ?>showcase'>Showcase</a>
           <div class='navbar-item has-dropdown is-hoverable'>
             <a class='navbar-link' href='<?php echo $base; ?>documentation'>
               Documentation
