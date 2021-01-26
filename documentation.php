@@ -21,7 +21,7 @@ include 'header.php';
         <section id='getting_started'>
           <h3 class='is-size-3'>Getting Started</h3>
           <p>
-            To get started with using Topik, read the <a href='<?php echo $base; ?>readme.md'>readme</a> file.
+            To get started with using Topik, read the <a href='readme.md'>readme</a> file.
             Then, come back here to read about installation.
           </p>
           <hr />
@@ -269,7 +269,7 @@ $date = "2021/01/01";
             and all the included markup will get you set up nicely with that, but
             by no means is it necessary. If you want to strip down to just the core (index.php, blog.php, Post.php, posts.php, and the posts directory) and
             rebuild, you totally can, and I think you <strong>should</strong>, but you don't <strong>have to</strong>.<br />
-            To read up on customization, take a look at <a href='<?php echo $base; ?>blog/2021-01-20-Documentation'>the blog post on it.</a>
+            To read up on customization, take a look at <a href='blog/2021-01-20-Documentation'>the blog post on it.</a>
           </p>
         </section>
         <section id='help'>

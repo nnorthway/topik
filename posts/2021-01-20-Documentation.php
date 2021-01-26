@@ -2,6 +2,7 @@
 $title = "Themes and Customization";
 $description = "Customization is what this is all about";
 $date = "2021/01/20";
+$subject = "Topik Blog Platform Documentation";
 ?>
 <p>
   Topik comes with just what you need to get started for a presentation layer.
@@ -48,7 +49,7 @@ foreach ($posts as $post) :
     &lt;p&gt;
       &lt;?php echo $post->description; ?&gt;
     &lt;/p&gt;
-    &lt;a href='&lt;?php echo $base . $post->link; ?&gt;'&gt;Read More&lt;/a&gt;
+    &lt;a href='&lt;?php echo $post->link; ?&gt;'&gt;Read More&lt;/a&gt;
   &lt;/div&gt;
 &lt;?php
 endforeach;
@@ -76,19 +77,19 @@ if ($posts) {
         &lt;p&gt;
           &lt;?php echo $post->description; ?&gt;
         &lt;/p&gt;
-        &lt;a href='&lt;?php echo $base . $post->link; ?&gt;'&gt;Read More&lt;/a&gt;
+        &lt;a href='&lt;?php echo $post->link; ?&gt;'&gt;Read More&lt;/a&gt;
       &lt;/div&gt;
     &lt;?php
   }
 }
 if ($offset - 1 > 0) {
   ?&gt;
-  &lt;a href='&lt;?php echo $base; ?&gt;posts?page=&lt;?php echo $offset - 1; ?&gt;'&gt;Previous Posts&lt;/a&gt;
+  &lt;a href='posts?page=&lt;?php echo $offset - 1; ?&gt;'&gt;Previous Posts&lt;/a&gt;
   &lt;?php
 }
 if (count($posts) == 9) {
   ?&gt;
-  &lt;a href='&lt;?php echo $base; ?&gt;posts?page=&lt;?php echo $offset + 1; ?&gt;'&gt;Newer Posts&lt;/a&gt;
+  &lt;a href='posts?page=&lt;?php echo $offset + 1; ?&gt;'&gt;Newer Posts&lt;/a&gt;
   &lt;?php
 }
   </code>
@@ -143,7 +144,7 @@ if (count($posts) == 9) {
           &lt;p&gt;
             &lt;?php echo $next_post['description']; ?&gt;
           &lt;/p&gt;&lt;br /&gt;
-          &lt;a href='&lt;?php echo $base . $next_post['link']; ?&gt;'&gt;Read&lt;/a&gt;
+          &lt;a href='&lt;?php echo $next_post['link']; ?&gt;'&gt;Read&lt;/a&gt;
         &lt;/div&gt;
       &lt;/div&gt;
       &lt;?php

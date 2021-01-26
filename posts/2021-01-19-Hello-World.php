@@ -2,6 +2,7 @@
 $title = "Hello, World!";
 $description = "Just dropping in to say hi!";
 $date = "2021/01/29";
+$subject = "Hello, World";
 ?>
 <h1>Hello, World!</h1>
 <p>

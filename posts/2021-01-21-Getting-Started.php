@@ -2,6 +2,7 @@
 $title = "Getting Started";
 $description = "An Intro to this system";
 $date = "2021/01/21";
+$subject = "Getting started with Topik Blog System";
 ?>
 <h1>Welcome to Topik!</h1>
 <p>

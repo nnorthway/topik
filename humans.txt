@@ -1,0 +1,13 @@
+/* TEAM */
+Developer: Nate Northway
+Site: https://natenorthway.com
+Twitter: @the_Northway
+Email: nate@natenorthway.com
+Location: Milwaukee, Wisconsin, USA
+
+/* SITE */
+Last Updated: 2021/01/25
+Standards: HTML5, CSS3, JS, PHP7
+Components: Bulma.io
+Software: Atom.io, Google Chrome, Mozilla Firefox, Apple Safari, GitHub,
+FileZilla, cPanel
