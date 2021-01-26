@@ -72,6 +72,20 @@ class Post {
     return $return;
   }
 
+  public static function get_pagination($current) {
+    $arr = self::get_postnames();
+    $count = count($arr) / 9;
+    $return['count'] = ceil($count);
+    if (($current + 1) <= $return['count']) {
+      $return['next'] = $current + 1;
+    }
+    if (($current - 1) >= 1) {
+      $return['prev'] = $current - 1;
+    }
+    $return['current'] = $current;
+    return $return;
+  }
+
   private static function get_postnames() {
     return array_map(
       function($post) {
