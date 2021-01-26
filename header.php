@@ -102,6 +102,9 @@
     .showcase:hover img {
       filter: brightness(50%);
     }
+    .pagination .button.is-active {
+      background-color: rgb(245,245,245);
+    }
     </style>
   </head>
   <body>
