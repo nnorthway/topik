@@ -151,3 +151,43 @@ if (count($posts) == 9) {
     }
   </code>
 </pre>
+<hr />
+<h3 class='is-size-3'>Config File</h3>
+<p>
+  The config file contains a lot of customizable options to improve SEO.
+  The only variables that are required are the <code>$blogName</code> and <code>$base</code>,
+  but the rest really help SEO. This list describes all of the available
+  options and what they're used for.
+</p>
+<ul>
+  <li>
+    <code>$blogDescription</code>: A description of your blog. This
+    will be overwritten by the post description on post pages.
+  </li>
+  <li>
+    <code>$blogSubject</code>: The subject of your blog. This will be
+    overwritten by the post subject on post pages (if the subject is
+    set). If empty or unset, it defaults to the blog name.
+  </li>
+  <li>
+    <code>$googleSiteVerification</code>: Your Google Site Verification
+    key
+  </li>
+  <li>
+    <code>$generator</code>: The program used to generate the page.
+    Usually your text editor.
+  </li>
+  <li>
+    <code>$postsPage</code>: The page that will have all of your posts
+    displayed. Defaults to "posts.php". This helps with canonical links
+    and defines the Archive meta tag.
+  </li>
+  <li>
+    <code>$blogPage</code>: The page that is called when displaying a
+    blog post. Default is "blog.php"
+  </li>
+  <li>
+    <code>$blogHumans</code>: The location of the humans.txt file. No
+    default.
+  </li>
+</ul>
