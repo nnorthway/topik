@@ -13,9 +13,9 @@ include 'header.php';
         An open source, database-less blogging system (or flat-file) that is based in simplicity and speed. There is no "admin" section and this is not a CMS. This system simply gathers all of your posts and puts them into a comprehensive view. Posts are written in PHP and require a little bit of PHP knowledge to get started.
       </p>
       <div class='level'>
-        <a class='button is-info' href='<?php echo $base; ?>documentation#getting_started'>Get Started</a>
-        <a class='button is-info' href='<?php echo $base; ?>documentation'>Documentation</a>
-        <a class='button is-info' href='<?php echo $base; ?>posts'>All Posts</a>
+        <a class='button is-info' href='documentation#getting_started'>Get Started</a>
+        <a class='button is-info' href='documentation'>Documentation</a>
+        <a class='button is-info' href='posts'>All Posts</a>
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@ include 'header.php';
     <?php
     foreach ($posts as $post) : ?>
     <div class='column'>
-      <a class='box' href='<?php echo $base . $post['link']; ?>'>
+      <a class='box' href='<?php echo $post['link']; ?>'>
         <p class='title'>
           <?php echo $post['title']; ?>
         </p>

@@ -10,6 +10,7 @@ class Post {
   public $link;
   public $next_link;
   public $prev_link;
+  public $subject;
 
   private function __construct($file) {
     if ($file == null | $file == '') {
@@ -22,9 +23,10 @@ class Post {
     $link = $parts['filename'];
     ob_start();
     include self::Dir . $file;
-    $this->title = $title;
-    $this->raw_date = $date;
-    $this->description = $description;
+    $this->title = isset($title)?$title:"";
+    $this->raw_date = isset($date)?$date:new Date('now');
+    $this->description = isset($description)?$description:"";
+    $this->subject = isset($subject)?$subject:"";
     ob_end_clean();
     $theFile = file_get_contents(self::Dir . $file);
     $this->content = mb_convert_encoding(

@@ -6,6 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title><?php echo isset($title) ? $title . " | ":''; echo $blogName;?></title>
+    <base href="<?php echo $base; ?>" />
+    <meta name='description' content="<?php echo $description; ?>" />
+    <meta name="robots" content="index,follow" />
+    <meta name="googlebot" content="index,follow" />
+    <meta name="google" content="nositelinkssearchbox" />
+    <meta name="google" content="notranslate" />
+    <?php
+      if (isset($googleSiteVerification)) :
+        ?>
+        <meta name="google-site-verification" content="<?php echo $googleSiteVerification; ?>" />
+        <?php
+      endif;
+    ?>
+    <meta name="generator" content="<?php echo isset($generator)?$generator:'Atom.io'; ?>">
+    <?php
+    $subject = $blogName;
+    if (isset($post->subject)) {
+      $subject = $post->subject;
+    } else if (isset($blogSubject)) {
+      $subject = $blogSubject;
+    }
+    ?>
+    <meta name="subject" content="<?php echo $subject; ?>">
+    <?php
+    $link = "";
+    if (isset($postsPage) && strpos($_SERVER['REQUEST_URI'], $postsPage) !== false) {
+      if (($offset - 1) != 0) {
+        $link = $base . "posts?page=" . ($offset - 1);
+      } else {
+        $link = $base . "posts?page=" . ($offset + 1);
+      }
+    } else if (isset($post->next_link) && $post->next_link != "") {
+      $link = $base . $blogPage . $post->next_link;
+    }
+    if ($link != "") :
+      ?>
+      <link rel="canonical" href="<?php echo $link; ?>">
+      <?php
+    endif;
+    ?>
+    <?php if (isset($blogHumans)) : ?>
+      <link rel="author" href="<?php echo $blogHumans; ?>">
+    <?php endif; ?>
+    <?php if (isset($postsPage)) : ?>
+      <link rel="archives" href="<?php echo $postsPage; ?>">
+    <?php endif; ?>
     <link type='text/css' href='https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css' rel='stylesheet' />
     <style type='text/css'>
     main {
@@ -71,19 +117,19 @@
         </div>
         <div id='navbar' class='navbar-menu'>
           <a class='navbar-item' href='<?php echo $base; ?>'>Home</a>
-          <a class='navbar-item' href='<?php echo $base; ?>posts'>Blog</a>
-          <a class='navbar-item' href='<?php echo $base; ?>showcase'>Showcase</a>
+          <a class='navbar-item' href='posts'>Blog</a>
+          <a class='navbar-item' href='showcase'>Showcase</a>
           <div class='navbar-item has-dropdown is-hoverable'>
-            <a class='navbar-link' href='<?php echo $base; ?>documentation'>
+            <a class='navbar-link' href='documentation'>
               Documentation
             </a>
             <div class='navbar-dropdown'>
-              <a class='navbar-item' href='<?php echo $base; ?>documentation#getting_started'>Getting Started</a>
-              <a class='navbar-item' href='<?php echo $base; ?>documentation#pages'>Pages</a>
-              <a class='navbar-item' href='<?php echo $base; ?>documentation#post_class'>The Post Class</a>
-              <a class='navbar-item' href='<?php echo $base; ?>documentation#content'>Content</a>
-              <a class='navbar-item' href='<?php echo $base; ?>documentation#customization'>Customization</a>
-              <a class='navbar-item' href='<?php echo $base; ?>documentation#help'>Help</a>
+              <a class='navbar-item' href='documentation#getting_started'>Getting Started</a>
+              <a class='navbar-item' href='documentation#pages'>Pages</a>
+              <a class='navbar-item' href='documentation#post_class'>The Post Class</a>
+              <a class='navbar-item' href='documentation#content'>Content</a>
+              <a class='navbar-item' href='documentation#customization'>Customization</a>
+              <a class='navbar-item' href='documentation#help'>Help</a>
             </div>
           </div>
         </div>

@@ -18,7 +18,7 @@ include 'header.php';
     <div class='columns is-centered'>
       <div class='column is-half'>
         <a class='showcase' href='http://beta.natenorthway.com'>
-          <img src='<?php echo $base; ?>img/nate_northway.png' load='lazy' alt="Nate Northway's Site Built With Topik" target='_blank' />
+          <img src='img/nate_northway.png' load='lazy' alt="Nate Northway's Site Built With Topik" target='_blank' />
           <h4 class='is-size-4'>Nate Northway</h4>
           <p class='subtitle'>
             Feb 1, 2021

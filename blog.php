@@ -3,6 +3,12 @@ include "config.php";
 include 'Post.php';
 $post = Post::get_post(basename($_SERVER['REQUEST_URI']));
 $title = $post->title;
+$description = "";
+if (isset($post->description)) {
+  $description = $post->description;
+} else if (isset($blogDescription)) {
+  $description = $blogDescription;
+}
 include "header.php";
 ?>
 <div class='section'>
@@ -38,7 +44,7 @@ include "header.php";
           <p>
             <?php echo $prev_post['description']; ?>
           </p><br />
-          <a href='<?php echo $base . $prev_post['link']; ?>' class='button is-info'>Read</a>
+          <a href='<?php echo $prev_post['link']; ?>' class='button is-info'>Read</a>
         </div>
       </div>
       <?php
@@ -53,7 +59,7 @@ include "header.php";
           <p>
             <?php echo $next_post['description']; ?>
           </p><br />
-          <a href='<?php echo $base . $next_post['link']; ?>' class='button is-info'>Read</a>
+          <a href='<?php echo $next_post['link']; ?>' class='button is-info'>Read</a>
         </div>
       </div>
       <?php
