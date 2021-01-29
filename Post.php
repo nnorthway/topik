@@ -12,7 +12,7 @@ class Post {
   public $prev_link;
   public $subject;
 
-  private function __construct($file) {
+  private function __construct($file = null) {
     if ($file == null | $file == '') {
       return false;
     }
@@ -39,7 +39,8 @@ class Post {
     $this->prev_link = $this->get_prev_post($file);
   }
 
-  public static function get_post($file) {
+  public static function get_post($file = null) {
+    if (!$file || $file = "" || !isset($file)) return false;
     if ($file) {
       return new self($file);
     }
@@ -72,7 +73,7 @@ class Post {
     return $return;
   }
 
-  public static function get_pagination($current) {
+  public static function get_pagination($current = 1) {
     $arr = self::get_postnames();
     $count = count($arr) / 9;
     $return['count'] = ceil($count);
@@ -93,7 +94,8 @@ class Post {
       }, array_reverse(glob(self::Dir . '*.php')));
   }
 
-  public static function get_post_meta($file) {
+  public static function get_post_meta($file = null) {
+    if (!$file || $file = "" || !isset($file)) return false;
     $post = self::get_post($file);
     if ($post) {
       return array(
@@ -106,7 +108,8 @@ class Post {
     return false;
   }
 
-  private function get_next_post($title) {
+  private function get_next_post($title = null) {
+    if (!$title || $title = "" || !isset($title)) return false;
     $arr = self::get_postnames();
     $item_key = array_search($title, $arr);
     if ($item_key !== false && $item_key != 0) {
@@ -118,7 +121,8 @@ class Post {
     return false;
   }
 
-  private function get_prev_post($title) {
+  private function get_prev_post($title = null) {
+    if (!$title || $title = "" || !isset($title)) return false;
     $arr = self::get_postnames();
     $item_key = array_search($title, $arr);
     if ($item_key !== false) {
