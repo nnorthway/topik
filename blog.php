@@ -1,6 +1,9 @@
 <?php
 include "config.php";
 include 'Post.php';
+if (preg_match('/[\'^£$%&*()}{@#~?><>,|=+¬]/', $_SERVER['REQUEST_URI'])) {
+  header('Location: ' . $base . 'error?e=400');
+}
 $post = Post::get_post(basename($_SERVER['REQUEST_URI']));
 $title = $post->title;
 $description = "";
