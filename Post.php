@@ -40,7 +40,7 @@ class Post {
   }
 
   public static function get_post($file = null) {
-    if (!$file || $file = "" || !isset($file)) return false;
+    if (!$file || $file == "" || !isset($file)) return false;
     if ($file) {
       return new self($file);
     }
@@ -95,7 +95,7 @@ class Post {
   }
 
   public static function get_post_meta($file = null) {
-    if (!$file || $file = "" || !isset($file)) return false;
+    if (!$file || $file == "" || !isset($file)) return false;
     $post = self::get_post($file);
     if ($post) {
       return array(
@@ -109,7 +109,7 @@ class Post {
   }
 
   private function get_next_post($title = null) {
-    if (!$title || $title = "" || !isset($title)) return false;
+    if (!$title || $title == "" || !isset($title)) return false;
     $arr = self::get_postnames();
     $item_key = array_search($title, $arr);
     if ($item_key !== false && $item_key != 0) {
@@ -122,7 +122,7 @@ class Post {
   }
 
   private function get_prev_post($title = null) {
-    if (!$title || $title = "" || !isset($title)) return false;
+    if (!$title || $title == "" || !isset($title)) return false;
     $arr = self::get_postnames();
     $item_key = array_search($title, $arr);
     if ($item_key !== false) {

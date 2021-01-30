@@ -28,7 +28,7 @@ $subject = "Topik Blog Platform Documentation";
   </li>
 </ul>
 <p>
-  To get started with pagination, there are a few options. In most cases, you'll
+  To get started with customization, there are a few options. In most cases, you'll
   want to create another directory for your stylesheets, javascript, and images.
   You'll then have to link to them. You can do this in the <code>header.php</code>
   file using <code>&lt;style /&gt;</code> and <code>&lt;script&gt;&lt;/script&gt;</code> tags.<br />
@@ -62,8 +62,7 @@ endforeach;
   parameter, which is the page number the user has navigated to. The default
   value is 1. Only integers are accepted, no strings. We suggest using <code>?page=1</code>
   in the URL and the <code>$_GET</code> array to access the <code>['page']</code> key. <br />
-  You can later use that variable to determine if there is a previous page. You can use
-  the amount of posts returned to determine if there is another page to go to.
+  You can later use that variable to get the <a href='#pagination'>pagination</a>.
 </p>
 <pre class='php'>
   <code>
@@ -81,16 +80,6 @@ if ($posts) {
       &lt;/div&gt;
     &lt;?php
   }
-}
-if ($offset - 1 > 0) {
-  ?&gt;
-  &lt;a href='posts?page=&lt;?php echo $offset - 1; ?&gt;'&gt;Previous Posts&lt;/a&gt;
-  &lt;?php
-}
-if (count($posts) == 9) {
-  ?&gt;
-  &lt;a href='posts?page=&lt;?php echo $offset + 1; ?&gt;'&gt;Newer Posts&lt;/a&gt;
-  &lt;?php
 }
   </code>
 </pre>
@@ -151,6 +140,49 @@ if (count($posts) == 9) {
     }
   </code>
 </pre>
+<h3 id='pagination'>Posts Page Pagination</h3>
+<p>
+  You can also get pagination for the Posts page. This function returns an array.
+  It accepts an integer, which should be the current page. The default value is 1.
+  The properties are as follows:
+  <ul>
+    <li>
+      <code>count</code>: How many total pages exist. This will always be returned.
+    </li>
+    <li>
+      <code>next</code>: The next page (older posts). This will not be returned if <code>offset</code> is equal to <code>count</code>.
+    </li>
+    <li>
+      <code>prev</code>: The preceding page (newer posts). This will not be returned if <code>offset</code> is equal to 1.
+    </li>
+    <li>
+      <code>current</code>: The current page. This will always be returned.
+    </li>
+  </ul>
+  An example of usage is below.
+</p>
+<pre>
+  <code class='php'>
+$offset = isset($_GET['page'])?$_GET['page']:1;
+$pagination = Post::get_pagination($offset);
+/*Later in the document*/
+if ($pagination['prev']):?&gt;
+&lgt;a href='posts?page=&lt;?php echo $pagination['prev']; ?&gt;'&gt;Newer Posts&lt;/a&gt;
+&lt;?php endif; ?&gt;
+&lt;?php echo "Page " . $pagination['current'] . " of " . $pagination['count']; ?&gt;
+if ($pagination['next']):&gt;
+&lt;a href='posts?page=&lt;?php echo $pagination['next']; ?&gt;'>Older Posts&lt;/a&gt;
+&lt;?php endif; ?&gt;
+  </code>
+</pre>
+<p>
+  The above will output something like this section below:
+</p>
+<div class='has-background-dark has-text-light'>
+  <a href='posts?page=1'>Newer Posts</a><br />
+  Page 2 of 6<br />
+  <a href='posts?page=3'>Older Posts</a>
+</div>
 <hr />
 <h3 class='is-size-3'>Config File</h3>
 <p>
