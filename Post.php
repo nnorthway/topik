@@ -24,7 +24,7 @@ class Post {
     ob_start();
     include self::Dir . $file;
     $this->title = isset($title)?$title:"";
-    $this->raw_date = isset($date)?$date:new Date('now');
+    $this->raw_date = isset($date)?$date:Date('now');
     $this->description = isset($description)?$description:"";
     $this->subject = isset($subject)?$subject:"";
     ob_end_clean();
@@ -132,5 +132,22 @@ class Post {
       }
     }
     return false;
+  }
+
+  public function search($str) {
+    $results = array();
+    $search = strtolower($str);
+    $files = scandir(self::Dir);
+    foreach ($files as $k=>$v) {
+      $path = realpath(self::Dir . '/' . $v);
+      if (!is_dir($path)) {
+        $content = strtolower(file_get_contents($path));
+        $title = strtolower($path);
+        if ((strpos($content, $search) || strpos($title, $search)) && !strpos($path, ".DS_Store")) {
+          $results[] = self::get_post(basename($path));
+        }
+      }
+    }
+    return $results;
   }
 }
