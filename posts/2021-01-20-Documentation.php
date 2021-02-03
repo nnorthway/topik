@@ -184,6 +184,47 @@ if ($pagination['next']):&gt;
   <a href='posts?page=3'>Older Posts</a>
 </div>
 <hr />
+<h3 class='is-size-3'>Search</h3>
+<p>
+  The search function is built in to the Post class. It accepts a string and
+  returns an array of posts. The posts returned will either have a title or
+  content that matches. This function is not verbose, though, so simple strings
+  like "a" or "is" will likely match multiple posts. Below is demo
+  implementation code.
+</p>
+<pre>
+  <code class='php'>
+if (isset($_GET['term'])) $results = Post::search($_GET['term']);
+....
+if ($results) {
+  foreach ($results as $result) {
+    //do stuff (like display the posts)
+  }
+}
+  </code>
+</pre>
+<p>
+  The form used on Topik uses the <code>GET</code> method, which appends the
+  input value to the end of the URL string. For example, if the page that runs
+  the function is <code>search.php</code>, the URL when a search is executed
+  becomes <code>search.php?term=crocodile</code>. Below is some starter code
+  for the search form.
+</p>
+<pre>
+  <code class='html'>
+&lt;form action='search' method='get'&gt;
+  &lt;input type='text' name='term' id='term' /&gt;
+  &lt;label for='term'&gt;Search For&lt;/label&gt;
+  &lt;button type='submit'&gt;Search&lt;/button&gt;
+&lt;/form&gt;
+  </code>
+</pre>
+<p>
+  There are other things that can be done there, like adding an autofilled value
+  if there is already a term in the <code>$_GET</code> array, but we'll let you
+  make those decisions.
+</p>
+<hr />
 <h3 class='is-size-3'>Config File</h3>
 <p>
   The config file contains a lot of customizable options to improve SEO.
