@@ -295,6 +295,93 @@ $date = "2021/01/01";
             </ul>
           </div>
         </section>
+        <section id='pagination'>
+          <h3 class='is-size-3'>Posts Page Pagination</h3>
+          <p>
+            You can also get pagination for the Posts page. This function returns an array.
+            It accepts an integer, which should be the current page. The default value is 1.
+            The properties are as follows:
+            <ul>
+              <li>
+                <code>count</code>: How many total pages exist. This will always be returned.
+              </li>
+              <li>
+                <code>next</code>: The next page (older posts). This will not be returned if <code>offset</code> is equal to <code>count</code>.
+              </li>
+              <li>
+                <code>prev</code>: The preceding page (newer posts). This will not be returned if <code>offset</code> is equal to 1.
+              </li>
+              <li>
+                <code>current</code>: The current page. This will always be returned.
+              </li>
+            </ul>
+            An example of usage is below.
+          </p>
+          <pre>
+            <code class='php'>
+          $offset = isset($_GET['page'])?$_GET['page']:1;
+          $pagination = Post::get_pagination($offset);
+          /*Later in the document*/
+          if ($pagination['prev']):?&gt;
+          &lgt;a href='posts?page=&lt;?php echo $pagination['prev']; ?&gt;'&gt;Newer Posts&lt;/a&gt;
+          &lt;?php endif; ?&gt;
+          &lt;?php echo "Page " . $pagination['current'] . " of " . $pagination['count']; ?&gt;
+          if ($pagination['next']):&gt;
+          &lt;a href='posts?page=&lt;?php echo $pagination['next']; ?&gt;'>Older Posts&lt;/a&gt;
+          &lt;?php endif; ?&gt;
+            </code>
+          </pre>
+          <p>
+            The above will output something like this section below:
+          </p>
+          <div class='has-background-dark has-text-light'>
+            <a href='posts?page=1'>Newer Posts</a><br />
+            Page 2 of 6<br />
+            <a href='posts?page=3'>Older Posts</a>
+          </div>
+        </section>
+        <section id='search'>
+          <h3 class='is-size-3'>Search</h3>
+          <p>
+            The search function is built in to the Post class. It accepts a string and
+            returns an array of posts. The posts returned will either have a title or
+            content that matches. This function is not verbose, though, so simple strings
+            like "a" or "is" will likely match multiple posts. Below is demo
+            implementation code.
+          </p>
+          <pre>
+            <code class='php'>
+          if (isset($_GET['term'])) $results = Post::search($_GET['term']);
+          ....
+          if ($results) {
+            foreach ($results as $result) {
+              //do stuff (like display the posts)
+            }
+          }
+            </code>
+          </pre>
+          <p>
+            The form used on Topik uses the <code>GET</code> method, which appends the
+            input value to the end of the URL string. For example, if the page that runs
+            the function is <code>search.php</code>, the URL when a search is executed
+            becomes <code>search.php?term=crocodile</code>. Below is some starter code
+            for the search form.
+          </p>
+          <pre>
+            <code class='html'>
+          &lt;form action='search' method='get'&gt;
+            &lt;input type='text' name='term' id='term' /&gt;
+            &lt;label for='term'&gt;Search For&lt;/label&gt;
+            &lt;button type='submit'&gt;Search&lt;/button&gt;
+          &lt;/form&gt;
+            </code>
+          </pre>
+          <p>
+            There are other things that can be done there, like adding an autofilled value
+            if there is already a term in the <code>$_GET</code> array, but we'll let you
+            make those decisions.
+          </p>
+        </section>
         <section id='customization'>
           <h3 class='is-size-3'>Customization</h3>
           <p>
