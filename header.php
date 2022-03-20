@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title><?php echo isset($title) ? $title . " | ":''; echo $blogName;?></title>
     <base href="<?php echo $base; ?>" />
-    <meta name='description' content="<?php echo $description; ?>" />
+    <meta name='description' content="<?php echo $blogDescription; ?>" />
     <meta name="robots" content="index,follow" />
     <meta name="googlebot" content="index,follow" />
     <meta name="google" content="nositelinkssearchbox" />
